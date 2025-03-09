@@ -1,0 +1,23 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
+a{
+    text-decoration: none;
+    color: gray;
+}
+li{
+    list-style: none;
+}
+h1{
+    font-size: 50px;
+    font-weight: bolder;
+}
+p{
+    color: gray;
+}
+.menu{
+    margin-top: 100px;
+}
+footer{
+    margin-top: 100px;
+}

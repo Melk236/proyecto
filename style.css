@@ -1,0 +1,298 @@
+/* Custom CSS */
+
+/* Variables */
+:root {
+    --primary: #e67e22;
+    --primary-dark: #d35400;
+    --primary-light: #f8f0ea;
+    --dark: #2c3e50;
+    --light: #ecf0f1;
+    --gray: #95a5a6;
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Roboto', sans-serif;
+  }
+  
+  /* General Styles */
+  body {
+    font-family: var(--font-sans);
+    color: var(--dark);
+  }
+  
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+  
+  /* Buttons */
+  .btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+  }
+  
+  .btn-primary:hover,
+  .btn-primary:focus {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+  }
+  
+  .btn-outline-primary {
+    color: var(--primary);
+    border-color: var(--primary);
+  }
+  
+  .btn-outline-primary:hover,
+  .btn-outline-primary:focus {
+    background-color: var(--primary);
+    border-color: var(--primary);
+  }
+  
+  /* Text Colors */
+  .text-primary {
+    color: var(--primary) !important;
+  }
+  
+  /* Background Colors */
+  .bg-primary {
+    background-color: var(--primary) !important;
+  }
+  
+  .bg-primary-light {
+    background-color: var(--primary-light) !important;
+  }
+  
+  /* Navbar */
+  .navbar {
+    backdrop-filter: blur(10px);
+  }
+  
+  /* Carousel */
+  .carousel-section {
+    margin-top: 76px;
+    height: 700px;
+  }
+  
+  .carousel,
+  .carousel-inner,
+  .carousel-item {
+    height: 100%;
+  }
+  
+  .carousel-item img {
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .carousel-caption {
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  /* Animations for carousel captions */
+  .animate-caption {
+    animation: fadeInUp 1s ease forwards;
+  }
+  
+  .animate-caption-delay {
+    animation: fadeInUp 1s ease 0.3s forwards;
+    opacity: 0;
+  }
+  
+  .animate-caption-delay-2 {
+    animation: fadeInUp 1s ease 0.6s forwards;
+    opacity: 0;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Divider */
+  .divider-custom {
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary);
+    margin: 1.5rem auto;
+  }
+  
+  /* Cards */
+  .hover-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  /* Icon Circles */
+  .icon-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+  }
+  
+  /* Background Overlay */
+  .bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+  }
+  
+  /* Social Icons */
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  
+  .social-icon:hover {
+    background-color: var(--primary);
+    color: white;
+  }
+  
+  /* Auth Pages */
+  .auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  
+  .auth-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+  }
+  
+  .back-link {
+    position: relative;
+    z-index: 10;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .back-link:hover {
+    color: var(--primary);
+  }
+  
+  /* Reservation Page */
+  .reservation-page {
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  .reservation-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+  }
+  
+  /* Success Icon */
+  .success-icon {
+    width: 100px;
+    height: 100px;
+    background-color: rgba(40, 167, 69, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  
+  /* Admin Dashboard */
+  .nav-pills .nav-link.active {
+    background-color: var(--primary);
+  }
+  
+  .nav-pills .nav-link {
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .nav-pills .nav-link:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .carousel-section {
+      height: 500px;
+    }
+    
+    .carousel-caption {
+      padding: 1rem;
+    }
+    
+    .carousel-caption h2 {
+      font-size: 2rem;
+    }
+    
+    .divider-custom {
+      margin: 1rem auto;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .carousel-section {
+      height: 400px;
+    }
+    
+    .carousel-caption h2 {
+      font-size: 1.5rem;
+    }
+    
+    .carousel-caption p {
+      font-size: 1rem;
+    }
+    
+    .icon-circle {
+      width: 60px;
+      height: 60px;
+      font-size: 1.25rem;
+    }
+  }
