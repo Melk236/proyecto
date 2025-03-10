@@ -1,7 +1,8 @@
-body{
-    background-image: url('car4.jpg');
+body {
+    background-image: url('inicio.jpg');
     background-position: center;
-    background-repeat: no-repeat;
+    background-size: cover;  /* Usar background-size en lugar de 'background' */
+    background-repeat: no-repeat; /* Evitar que se repita la imagen */
 }
 input{
     width: 300px;
@@ -19,13 +20,24 @@ input{
     padding-bottom: 55px;
    border-radius: 10px;
    background-color: white;
+   border-color: white;
     
 }
 i{
     
     color: white;
 }
+a{
+    all: unset;
+
+}
 a:first-child{
     
     color: white;
+}
+li{
+    list-style: none;
+}
+footer{
+    padding: 3rem 0;
 }

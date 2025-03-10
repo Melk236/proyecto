@@ -190,8 +190,7 @@ function eliminarCita(){
     peticion.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     peticion.onreadystatechange=function(){
-        console.log('ReadyState:', peticion.readyState);
-        console.log('Status:', peticion.status);
+      
         if(peticion.readyState==4 && peticion.status==200){
             let objeto=JSON.parse(peticion.responseText);
             if(objeto.respuesta){

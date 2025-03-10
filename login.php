@@ -7,7 +7,7 @@ header('Content-Type: application/json');
 $usuario = $_POST['usuario'];
 $contraseña = $_POST['contraseña'];
 try {
-    $conexion = new PDO('mysql:host=localhost;dbname=restaurante', 'root', 'root');
+    $conexion = new PDO('mysql:host=localhost;dbname=restaurante', 'root', 'admin123');
     $resultado = $conexion->prepare('SELECT * FROM usuarios WHERE usuario=?');
 
     $resultado->execute(array($usuario));

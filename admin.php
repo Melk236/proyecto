@@ -157,14 +157,19 @@
 
                     <?php
                     try {
-                        $conexion = new PDO('mysql:host=localhost;dbname=restaurante', 'root', 'root');
+                        $conexion = new PDO('mysql:host=localhost;dbname=restaurante', 'root', 'admin123');
                         if (isset($_POST['enviar']) && !empty($_POST['localizador'])) {
                             $localizador = $_POST['localizador'];
                             $resultado = $conexion->prepare('SELECT * FROM citas WHERE localizador=?');
+                            if($resultado->rowCount() > 0) {    
                             $resultado->execute(array($localizador));
+                            }
                         } else {
+
                             $resultado = $conexion->prepare('SELECT * FROM citas ORDER BY mes DESC');
+                            
                             $resultado->execute();
+                            
                         }
                         while ($fila = $resultado->fetch(PDO::FETCH_ASSOC)) {
                             if ($fila['dia'] < 10) {

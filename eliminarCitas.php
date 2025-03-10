@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 
 $localizador=$_POST['localizador'];
 try{
-    $conexion=new PDO('mysql:host=localhost;dbname=restaurante','root','root');
+    $conexion=new PDO('mysql:host=localhost;dbname=restaurante','root','admin123');
 
     $resultado=$conexion->prepare('DELETE FROM citas WHERE localizador=?');
 

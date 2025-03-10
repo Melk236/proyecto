@@ -13,7 +13,28 @@
 </head>
 
 <body>
-  
+  <header class="fixed-top bg-white header"><!--Header-->
+    <nav class="navbar">
+        <div class="container d-flex">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <i class="fas fa-utensils text-primary me-2"></i>
+                <span class="fw-bold font-serif text-dark">La Delicia</span>
+            </a>
+
+            <div class="row mt-4">
+                <ul class="d-flex flex-wrap justify-content-center align-items-center gap-5">
+                    <li class="nav-item"><a href="#" class="text-dark">Menú</a></li>
+                    <li class="nav-item"><a href="#" class="text-dark">Nosotros</a></li>
+                    <li class="nav-item"><a href="#" class="text-dark">Contacto</a></li>
+
+
+                    <a href="restaurante.php" class="nav-item ms-3 btn btn-primary rounded-pill  text-light">Inicio</a>
+                    </button>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
   <div class="container d-flex justify-content-center mt-4">
     <i class="d-flex fas fa-arrow-left me-2"><a href="restaurante.php">Volver a la pagina principal</a></i>
   </div>
@@ -42,6 +63,74 @@
   <span class="text-danger text-center" id="error"></span>
   <p class="mt-4">¿No tienes una cuenta?<span class="ms-2 "><a href="registro.html" class="fw-bold text-primary">Registrate aquí</a></span></p>
   </form>
+  <footer class="bg-dark text-white mt-5">
+    <div class="container py-4">
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="d-flex align-items-center mb-3">
+                    <i class="fas fa-utensils text-primary me-2"></i>
+                    <span class="h4 font-serif mb-0">La Delicia</span>
+                </div>
+                <p class="text-white">El mejor restaurante mediterráneo de la ciudad.</p>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="font-serif mb-3">Horario</h5>
+                <ul class="list-unstyled text-muted">
+                    <li class="d-flex justify-content-between mb-2 text-white">
+                        <span>Lunes - Jueves:</span>
+                        <span>12:00 - 23:00</span>
+                    </li>
+                    <li class="d-flex justify-content-between mb-2 text-white">
+                        <span>Viernes - Sábado:</span>
+                        <span>12:00 - 00:00</span>
+                    </li>
+                    <li class="d-flex justify-content-between mb-2 text-white">
+                        <span>Domingo:</span>
+                        <span>12:00 - 22:00</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="font-serif mb-3">Contacto</h5>
+                <ul class="list-unstyled text-muted">
+                    <li class="d-flex align-items-center mb-2">
+                        <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                        <span class="text-white">Calle Principal 123, Ciudad</span>
+                    </li>
+                    <li class="d-flex align-items-center mb-2">
+                        <i class="fas fa-phone text-primary me-2"></i>
+                        <span class="text-white">+34 123 456 789</span>
+                    </li>
+                    <li class="d-flex align-items-center mb-2">
+                        <i class="fas fa-envelope text-primary me-2"></i>
+                        <span class="text-white">info@ladelicia.com</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="font-serif mb-3">Síguenos</h5>
+                <div class="d-flex gap-2">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-tripadvisor"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="border-top border-secondary mt-4 pt-4 text-center text-muted">
+            <p class="mb-0">© 2025 La Delicia.</p>
+        </div>
+    </div>
+</footer>
+
 
 <script src="validar.js"></script>
 </body>
