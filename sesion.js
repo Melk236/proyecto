@@ -1,18 +1,24 @@
-function cerrarSesion(){
+function cerrarSesion() {
 
 
-    let peticion=new XMLHttpRequest();
+    let peticion = new XMLHttpRequest();
 
-    peticion.open('POST','sesion.php',true);
+    peticion.open('POST', 'sesion.php', true);
+    let confirmacion = confirm('¿Estás seguro de que deseas cerrar sesión?');
 
-    peticion.onreadystatechange=function(){
-        
-        if(peticion.readyState==4 && peticion.status==200){
-            alert('Sesion cerrada correctamente');
-            window.location.href='restaurante.php';
+    if (confirmacion) {
+
+
+        peticion.onreadystatechange = function () {
+
+            if (peticion.readyState == 4 && peticion.status == 200) {
+
+                window.location.href = 'restaurante.php';
+
+            }
+
+
         }
-
-        
+        peticion.send();
     }
-    peticion.send();
 }
