@@ -70,7 +70,7 @@ function cambiarTexto() {
     texto.innerHTML = 'Horas no disponibles para el ' + d + '/' + m + '/2025:';
     let fecha = document.getElementById('date');
     fecha.value = d + '/' + m + '/2025';
-    alert(fecha);
+    
 }
 function horasDisponibles() {
     let mes = document.getElementById('mes');

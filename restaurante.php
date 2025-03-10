@@ -67,6 +67,11 @@ if (!isset($_SESSION['usuario'])) {
               <button type="button" class="nav-item ms-2 btn btn-primary rounded-pill"><a href="registro.html" class="text-light">Registrarse</a></button>
             <?php 
             } 
+            else{
+              echo '<button type="button" onclick="cerrarSesion()" class="nav-item ms-3 btn btn-danger rounded-pill bg-white text-danger">
+                <i class="fas fa-user text-danger me-2"></i>Cerrar Sesión
+                </button>';
+            }
           ?>
           </ul>
         </div>
@@ -330,7 +335,7 @@ if (!isset($_SESSION['usuario'])) {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
-    
+    <script src="sesion.js"></script>
 </body>
 
 </html>
