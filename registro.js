@@ -3,7 +3,7 @@ function validar(){
     let contrasena=document.getElementById('contraseña').value;
     let contrasena2=document.getElementById('contraseña2').value;
     let patronUsuario=/^[A-Za-z]{6,8}$/;
-    let patronContraseña=/^[a-zA-Z0-9]{6,6}$/;
+    let patronContraseña=/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,6}$/;
 
     document.getElementById('errorU').innerHTML='';
     document.getElementById('errorC').innerHTML='';
