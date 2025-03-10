@@ -1,8 +1,8 @@
 function validar(){
     let usuario=document.getElementById('usuario').value;
     let contraseña=document.getElementById('contraseña').value;
-    let patronUsuario=/^[A-Za-z]{6,8}/;
-    let patronContraseña=/^[a-zA-Z0-0]{6,6}/;
+    let patronUsuario=/^[A-Za-z]{6,8}$/;
+    let patronContraseña=/^[a-zA-Z0-9]{6,6}$/;
     document.getElementById('errorU').innerHTML='';
     document.getElementById('errorC').innerHTML='';
     document.getElementById('error').innerHTML='';

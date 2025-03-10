@@ -5,7 +5,7 @@ session_start();
 
 if (!isset($_SESSION['usuario'])) {
     
-    $link = 'inicio.php'; 
+    $link = 'inicio.html'; 
 } else {
     
     if ($_SESSION['usuario'] == 'admin') {

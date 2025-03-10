@@ -161,9 +161,8 @@
                         if (isset($_POST['enviar']) && !empty($_POST['localizador'])) {
                             $localizador = $_POST['localizador'];
                             $resultado = $conexion->prepare('SELECT * FROM citas WHERE localizador=?');
-                            if($resultado->rowCount() > 0) {    
                             $resultado->execute(array($localizador));
-                            }
+                           
                         } else {
 
                             $resultado = $conexion->prepare('SELECT * FROM citas ORDER BY mes DESC');

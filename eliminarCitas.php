@@ -16,7 +16,7 @@ try{
     }
 }
 catch(PDOException $e){
-    echo json_encode(['respuesta'=>true,'mensaje'=>$e->getMessage()]);
+    echo json_encode(['respuesta'=>false,'mensaje'=>$e->getMessage()]);
 }
 
 
