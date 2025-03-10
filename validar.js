@@ -1,6 +1,6 @@
 function validar(){
-    let usuario=document.getElementById('usuario').value;
-    let contraseña=document.getElementById('contraseña').value;
+    let usuario=document.getElementById('usuario').value.trim()
+    let contraseña=document.getElementById('contraseña').value.trim();
     let patronUsuario=/^[A-Za-z]{6,8}$/;
     let patronContraseña=/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{1,6}$/;
     document.getElementById('errorU').innerHTML='';
@@ -12,7 +12,7 @@ function validar(){
         return;
     }
     if(!patronContraseña.test(contraseña)){
-        document.getElementById('errorC').innerHTML='La contraseña una longitud de 6 con carácteres y numeros';
+        document.getElementById('errorC').innerHTML='La contraseña debe tener una longitud de 6 con carácteres y numeros';
         return;
     }
     }

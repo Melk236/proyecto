@@ -1,25 +1,30 @@
 function validar(){
-    let usuario=document.getElementById('usuario').value;
-    let contrasena=document.getElementById('contraseña').value;
-    let contrasena2=document.getElementById('contraseña2').value;
+    let usuario=document.getElementById('usuario').value.trim();
+    let contrasena=document.getElementById('contraseña').value.trim();
+    let contrasena2=document.getElementById('contraseña2').value.trim();
     let patronUsuario=/^[A-Za-z]{6,8}$/;
-    let patronContraseña=/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,6}$/;
+    let patronContrasena=/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,6}$/;
+    
 
     document.getElementById('errorU').innerHTML='';
     document.getElementById('errorC').innerHTML='';
     document.getElementById('errorR').innerHTML='';
-    if(contrasena!=contrasena2){
+
+    if(contrasena!==contrasena2){
         document.getElementById('errorR').innerHTML='Las contraseñas no coinciden';
         return;
     }
+
     if(!patronUsuario.test(usuario)){
         document.getElementById('errorU').innerHTML='El nombre de usuario debe tener 6 a 8 carácteres';
         return;
     }
-    if(!patronContraseña.test(contrasena)){
-        document.getElementById('errorC').innerHTML='La contraseña debe tener 6 carácteres';
+
+    if(!patronContrasena.test(contrasena)){
+        document.getElementById('errorC').innerHTML='La contraseña debe tener letras y números';
         return;
     }
+    
 
     let peticion=new XMLHttpRequest();
     peticion.open('POST','registro.php',true);
