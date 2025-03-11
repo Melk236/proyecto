@@ -8,12 +8,16 @@ try{
     $resultado=$conexion->prepare('DELETE FROM citas WHERE localizador=?');
 
     $resultado->execute(array($localizador));
-    if($resultado->rowCount()>0){
+  
+    if($resultado->rowCount()> 0){  
         echo json_encode(['respuesta'=>true,'mensaje'=>'Registro borrado correctamente']);
+    }else{  
+
+        echo json_encode(['respuesta'=>false,'mensaje'=>'No se ha podido borrar la cita']);
     }
-    else{
-        echo json_encode(['respuesta'=>false,'mensaje'=>'Registro borrado correctamente']);
-    }
+   
+      
+    
 }
 catch(PDOException $e){
     echo json_encode(['respuesta'=>false,'mensaje'=>$e->getMessage()]);

@@ -295,7 +295,9 @@
                         <a href="#" class="social-icon">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-tripadvisor"></i>
+                        </a>
                     </div>
                 </div>
             </div>
