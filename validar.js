@@ -6,6 +6,7 @@ function validar(){
     document.getElementById('errorU').innerHTML='';
     document.getElementById('errorC').innerHTML='';
     document.getElementById('error').innerHTML='';
+    
     if(usuario!='admin'){
     if(!patronUsuario.test(usuario)){
         document.getElementById('errorU').innerHTML='El nombre de usuario debe tener 6 a 8 carácteres';
