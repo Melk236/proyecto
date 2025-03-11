@@ -9,12 +9,12 @@ try{
 
     $resultado->execute(array($localizador));
   
-    if($resultado->rowCount()> 0){  
+   
         echo json_encode(['respuesta'=>true,'mensaje'=>'Registro borrado correctamente']);
-    }else{  
+    
 
-        echo json_encode(['respuesta'=>false,'mensaje'=>'No se ha podido borrar la cita']);
-    }
+       
+    
    
       
     

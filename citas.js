@@ -70,7 +70,7 @@ function cambiarTexto() {
     texto.innerHTML = 'Horas no disponibles para el ' + d + '/' + m + '/2025:';
     let fecha = document.getElementById('date');
     fecha.value = d + '/' + m + '/2025';
-    
+
 }
 function horasDisponibles() {
     let mes = document.getElementById('mes');
@@ -87,7 +87,7 @@ function horasDisponibles() {
     peticion.onreadystatechange = function () {
         if (peticion.readyState == 4 && peticion.status == 200) {
             let sinCitas = document.getElementById('sinCita');
-            sinCitas.innerHTML='';
+            sinCitas.innerHTML = '';
             let objeto = JSON.parse(peticion.responseText);
             let span = document.getElementsByClassName('badge');
             for (let i = 0; i < span.length; i++) {//Vaciar las horas no disponibles anteriores
@@ -104,7 +104,7 @@ function horasDisponibles() {
                 }
             }
             else {
-              
+
                 sinCitas.innerHTML = objeto.mensaje;
             }
         }
@@ -114,17 +114,17 @@ function horasDisponibles() {
 }
 
 function confirmarReserva() {
-    
+
     let mes = document.getElementById('mes').value;
     let dias = document.getElementById('dia').value;
     let hora = document.getElementById('hora').value;
     let nombre = document.getElementById('nombre').value;
     let motivo = document.getElementById('motivo').value;
-    let n=document.getElementById('n');
-    let f=document.getElementById('f');
-    let h=document.getElementById('h');
-    let m=document.getElementById('m');
-    let c=document.getElementById('c');
+    let n = document.getElementById('n');
+    let f = document.getElementById('f');
+    let h = document.getElementById('h');
+    let m = document.getElementById('m');
+    let c = document.getElementById('c');
     if (nombre.trim() === "" || hora.trim() === "" || motivo.trim() === "") {
         alert("Por favor, completa todos los campos antes de confirmar la reserva.");
         return false;
@@ -139,7 +139,7 @@ function confirmarReserva() {
     if (mes < 10) {
         mes = '0' + mes;
     }
-    nombreSinEspacios=nombre.replace(' ','');
+    nombreSinEspacios = nombre.replace(' ', '');
     let localizador = nombreSinEspacios + dias + mes + '0' + hora;
     //Comunicación con el servidor mediante ajax
     let peticion = new XMLHttpRequest();
@@ -148,27 +148,27 @@ function confirmarReserva() {
 
     peticion.onreadystatechange = function () {
         if (peticion.readyState == 4 && peticion.status == 200) {
-            let objeto=JSON.parse(peticion.responseText);
-            let cont1=document.getElementById('1');
-            let cont2=document.getElementById('2');
-            let cont3=document.getElementById('3');
-            n.innerHTML=nombre;
-                f.innerHTML='';
-                h.innerHTML='';
-                m.innerHTML='';
-                c.innerHTML='';
-            if(objeto.respuesta){
-                n.innerHTML=nombre;
-                f.innerHTML=dias + '/' + mes + '/2025';
-                h.innerHTML='0'+hora+':00';
-                m.innerHTML=motivo;
-                c.innerHTML='Tu código de seguimiento: '+localizador;
-                cont1.style.display='none';
-                cont2.style.display='none';
-                cont3.style.display='block';
+            let objeto = JSON.parse(peticion.responseText);
+            let cont1 = document.getElementById('1');
+            let cont2 = document.getElementById('2');
+            let cont3 = document.getElementById('3');
+            n.innerHTML = nombre;
+            f.innerHTML = '';
+            h.innerHTML = '';
+            m.innerHTML = '';
+            c.innerHTML = '';
+            if (objeto.respuesta) {
+                n.innerHTML = nombre;
+                f.innerHTML = dias + '/' + mes + '/2025';
+                h.innerHTML = '0' + hora + ':00';
+                m.innerHTML = motivo;
+                c.innerHTML = 'Tu código de seguimiento: ' + localizador;
+                cont1.style.display = 'none';
+                cont2.style.display = 'none';
+                cont3.style.display = 'block';
 
             }
-            else{
+            else {
                 alert(objeto.mensaje);
             }
         }
@@ -179,29 +179,59 @@ function confirmarReserva() {
 
 }
 
-function eliminarCita(){
-    let boton=document.getElementById('codigo');
-    let localizador=boton.getAttribute('data-localizador');
-     
-    let peticion=new XMLHttpRequest();
 
-    peticion.open('POST','eliminarCitas.php',true);
+let boton = document.getElementById('codigo');
+
+boton.addEventListener('click', () => {
+    let padre = boton.parentNode;
+    console.log(padre);
+    let localizador = padre.getAttribute('data-localizador');
+
+    let peticion = new XMLHttpRequest();
+
+    peticion.open('POST', 'eliminarCitas.php', true);
 
     peticion.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-    peticion.onreadystatechange=function(){
-      
-        if(peticion.readyState==4 && peticion.status==200){
-            let objeto=JSON.parse(peticion.responseText);
-            if(objeto.respuesta){
-                
-            }
-            else{
+    peticion.onreadystatechange = function () {
+
+        if (peticion.readyState == 4 && peticion.status == 200) {
+            let objeto = JSON.parse(peticion.responseText);
+            if (!objeto.respuesta) {
                 alert(objeto.respuesta);
             }
-            location.reload(); 
+
+            location.reload();
         }
     }
-    let parametros='localizador='+encodeURIComponent(localizador);
+    let parametros = 'localizador=' + encodeURIComponent(localizador);
+    peticion.send(parametros);
+
+});
+
+function eliminarCita() {
+
+
+
+    let localizador = boton.getAttribute('data-localizador');
+
+    let peticion = new XMLHttpRequest();
+
+    peticion.open('POST', 'eliminarCitas.php', true);
+
+    peticion.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    peticion.onreadystatechange = function () {
+
+        if (peticion.readyState == 4 && peticion.status == 200) {
+            let objeto = JSON.parse(peticion.responseText);
+            if (!objeto.respuesta) {
+                alert(objeto.respuesta);
+            }
+
+            location.reload();
+        }
+    }
+    let parametros = 'localizador=' + encodeURIComponent(localizador);
     peticion.send(parametros);
 }

@@ -194,7 +194,7 @@
                             echo '<td>' . $hora . '</td>';
                             echo '<td>
                             
-                            <button class="btn btn-sm btn-danger btn-action" data-bs-toggle="modal" id="codigo" data-bs-target="#deleteModal" data-localizador="'.$fila['localizador'].'">
+                            <button class="btn btn-sm btn-danger btn-action" data-bs-toggle="modal"  data-bs-target="#deleteModal" data-localizador="'.$fila['localizador'].'">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </td>';
@@ -232,7 +232,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-danger" onclick="eliminarCita()">Eliminar Cita</button>
+                    <button type="button" class="btn btn-danger" id="codigo">Eliminar Cita</button>
                 </div>
             </div>
         </div>
