@@ -12,7 +12,7 @@ session_start();
     
 
     try{
-        $conexion=new PDO('mysql:host=localhost;dbname=restaurante','root','admin123');
+        $conexion=new PDO('mysql:host=localhost;dbname=restaurante','root','root');
         $resultado=$conexion->prepare('SELECT * FROM citas WHERE mes=? AND dia=? AND hora=?');
         $resultado->execute(array($mes,$dia,$hora));
         if($resultado->rowCount()>0){

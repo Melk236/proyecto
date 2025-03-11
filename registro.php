@@ -12,7 +12,7 @@ if (empty($contraseña)) {
     die(json_encode(['respuesta' => false, 'mensaje' => 'Esta vacio']));
 }
 try {
-    $conexion = new PDO('mysql:host=localhost;dbname=restaurante', 'root', 'admin123');
+    $conexion = new PDO('mysql:host=localhost;dbname=restaurante', 'root', 'root');
     $resultado = $conexion->prepare('SELECT usuario FROM usuarios where usuario=?');
     $resultado->execute(array($usuario));
 

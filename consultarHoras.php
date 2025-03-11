@@ -5,7 +5,7 @@ $dia=$_POST['dia'];
 
 try{
     
-    $conexion=new PDO('mysql:host=localhost;dbname=restaurante','root','admin123');
+    $conexion=new PDO('mysql:host=localhost;dbname=restaurante','root','root');
     $resultado=$conexion->prepare('SELECT hora FROM citas WHERE mes=? AND dia=?');
     $resultado->execute(array($mes,$dia));
     if($resultado->rowCount()>0){

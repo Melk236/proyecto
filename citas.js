@@ -179,36 +179,43 @@ function confirmarReserva() {
 
 }
 
+window.onload = () => {
+    let boton = document.getElementsByClassName('loc');
+    for (let i = 0; i < boton.length; i++) {
+        boton[i].addEventListener('click', () => {
 
-let boton = document.getElementById('codigo');
+            let localizador = boton[i].getAttribute('data-localizador');
+           
+            let boton2 = document.getElementById('codigo');
+            boton2.addEventListener('click', () => {
+                let peticion = new XMLHttpRequest();
 
-boton.addEventListener('click', () => {
-    let padre = boton.parentNode;
-    console.log(padre);
-    let localizador = padre.getAttribute('data-localizador');
+                peticion.open('POST', 'eliminarCitas.php', true);
 
-    let peticion = new XMLHttpRequest();
+                peticion.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-    peticion.open('POST', 'eliminarCitas.php', true);
+                peticion.onreadystatechange = function () {
 
-    peticion.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    if (peticion.readyState == 4 && peticion.status == 200) {
+                        let objeto = JSON.parse(peticion.responseText);
+                        if (!objeto.respuesta) {
+                            alert(objeto.respuesta);
+                        }
 
-    peticion.onreadystatechange = function () {
+                        location.reload();
+                    }
+                }
+                let parametros = 'localizador=' + encodeURIComponent(localizador);
+                peticion.send(parametros);
 
-        if (peticion.readyState == 4 && peticion.status == 200) {
-            let objeto = JSON.parse(peticion.responseText);
-            if (!objeto.respuesta) {
-                alert(objeto.respuesta);
-            }
 
-            location.reload();
-        }
+            });
+
+
+        });
+
     }
-    let parametros = 'localizador=' + encodeURIComponent(localizador);
-    peticion.send(parametros);
-
-});
-
+}
 function eliminarCita() {
 
 

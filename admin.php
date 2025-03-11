@@ -157,7 +157,7 @@
 
                     <?php
                     try {
-                        $conexion = new PDO('mysql:host=localhost;dbname=restaurante', 'root', 'admin123');
+                        $conexion = new PDO('mysql:host=localhost;dbname=restaurante', 'root', 'root');
                         if (isset($_POST['enviar']) && !empty($_POST['localizador'])) {
                             $localizador = $_POST['localizador'];
                             $resultado = $conexion->prepare('SELECT * FROM citas WHERE localizador=?');
@@ -194,7 +194,7 @@
                             echo '<td>' . $hora . '</td>';
                             echo '<td>
                             
-                            <button class="btn btn-sm btn-danger btn-action" data-bs-toggle="modal"  data-bs-target="#deleteModal" data-localizador="'.$fila['localizador'].'">
+                            <button class="loc btn btn-sm btn-danger btn-action" data-bs-toggle="modal"  data-bs-target="#deleteModal" data-localizador="'.$fila['localizador'].'">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </td>';
