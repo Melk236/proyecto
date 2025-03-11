@@ -259,7 +259,35 @@ if (!isset($_SESSION['usuario'])) {
               </div>
           </div>
       </div>
+      <!--Servicios-->
+      
     </section>
+     <!--Servicios-->
+     <section class="container mt-5 pt-5">
+      <div class="text-center mb-5">
+        <h2 class="display-5 font-serif fw-bold mb-3">Nuestros Servicios</h2>
+        <div class="divider-custom"></div>
+        <p class="lead text-muted mx-auto" style="max-width: 700px;">
+          Descubre los servicios exclusivos que ofrecemos para hacer de tu experiencia algo inolvidable.
+        </p>
+      </div>
+      <div class="row g-4">
+        <!-- Service Card 1 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="card service-card shadow-sm">
+            <div class="position-relative">
+              <img src="https://via.placeholder.com/400x200" class="card-img-top service-image" alt="Catering para Eventos">
+              <div class="service-price">Desde 25€</div>
+            </div>
+            <div class="card-body p-4">
+              <h3 class="card-title h4 font-serif fw-bold">Catering para Eventos</h3>
+              <p class="card-text text-muted">Ofrecemos servicios de catering para todo tipo de eventos, desde bodas hasta reuniones corporativas. Menús personalizados con la mejor gastronomía mediterránea.</p>
+              <a href="<?php echo $link; ?>" class="btn btn-outline-primary rounded-pill mt-3">Reservar</a>
+            </div>
+          </div>
+        </div>
+        
+     </section>
     <footer class="bg-dark text-white">
 
       <div class="container py-4">

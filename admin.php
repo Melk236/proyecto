@@ -12,6 +12,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Custom CSS -->
     <style>
+        body {
+            padding-top: 120px;
+            /* Ajusta según la altura real del header */
+        }
+
         .font-serif {
             font-family: 'Roboto', sans-serif;
         }
@@ -89,6 +94,13 @@
             background-color: var(--bs-primary);
             color: white;
         }
+        .form-container {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
     </style>
 </head>
 
@@ -118,7 +130,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="container my-4" style="margin-top: 120px !important;">
+    <main class="container my-4 ">
         <div class="d-flex align-items-center mb-4">
             <i class="fas fa-calendar-check text-primary me-2 fs-3"></i>
             <h2 class="font-serif fw-bold mb-0">Gestión de Citas</h2>
@@ -128,7 +140,7 @@
         <div class="search-container">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
+                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                         <div class="input-group">
 
                             <input type="text" class="form-control" name="localizador" placeholder="Buscar por código localizador...">
@@ -162,13 +174,11 @@
                             $localizador = $_POST['localizador'];
                             $resultado = $conexion->prepare('SELECT * FROM citas WHERE localizador=?');
                             $resultado->execute(array($localizador));
-                           
                         } else {
 
                             $resultado = $conexion->prepare('SELECT * FROM citas ORDER BY mes DESC');
-                            
+
                             $resultado->execute();
-                            
                         }
                         while ($fila = $resultado->fetch(PDO::FETCH_ASSOC)) {
                             if ($fila['dia'] < 10) {
@@ -194,7 +204,7 @@
                             echo '<td>' . $hora . '</td>';
                             echo '<td>
                             
-                            <button class="loc btn btn-sm btn-danger btn-action" data-bs-toggle="modal"  data-bs-target="#deleteModal" data-localizador="'.$fila['localizador'].'">
+                            <button class="loc btn btn-sm btn-danger btn-action" data-bs-toggle="modal"  data-bs-target="#deleteModal" data-localizador="' . $fila['localizador'] . '">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </td>';
@@ -216,7 +226,7 @@
 
     </main>
 
-    
+
 
     <!-- Borrar citas -->
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -237,9 +247,63 @@
             </div>
         </div>
     </div>
+    <!--Subir servicios-->
+    <article class="container my-4" style="margin-top: 120px !important;">
+        <div class="d-flex align-items-center mb-4">
+            <i class="fas fa-concierge-bell text-primary me-2 fs-3"></i>
+            <h2 class="font-serif fw-bold mb-0">Gestión de Servicios</h2>
+        </div>
+
+        <!-- Add/Edit Service Form -->
+
+        <div class="form-container mb-5">
+            <h3 class="font-serif mb-3">Añadir Nuevo Servicio</h3>
+            <form id="serviceForm">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="serviceName" class="form-label">Nombre del Servicio*</label>
+                        <input type="text" class="form-control" id="serviceName" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="serviceCategory" class="form-label">Categoría</label>
+                        <select class="form-select" id="serviceCategory">
+                            <option value="catering">Catering</option>
+                            <option value="eventos">Eventos</option>
+                            <option value="especiales">Menús Especiales</option>
+                            <option value="otros">Otros</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="serviceDescription" class="form-label">Descripción*</label>
+                    <textarea class="form-control" id="serviceDescription" rows="3" required></textarea>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="serviceImage" class="form-label">Imagen*</label>
+                        <input type="file" class="form-control" id="serviceImage" accept="image/*" required>
+                        <div class="form-text">Solo se permiten archivos de imagen (JPG, PNG, GIF)</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="servicePrice" class="form-label">Precio (€)</label>
+                        <input type="number" class="form-control" id="servicePrice" min="0" step="0.01">
+                    </div>
+                </div>
+
+               
+
+                <div class="d-flex justify-content-end">
+                    <button type="reset" class="btn btn-secondary me-2">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Servicio</button>
+                </div>
+            </form>
+        </div>
+    </article>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white mt-5">
+    <footer class="bg-dark text-white" style="margin-top: 200px !important;">
         <div class="container py-4">
             <div class="row g-4">
                 <div class="col-lg-3 col-md-6">
@@ -307,11 +371,11 @@
         </div>
     </footer>
 
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-        <script src="citas.js"></script>
+    <script src="citas.js"></script>
 </body>
 
 </html>
