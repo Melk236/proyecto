@@ -1,8 +1,8 @@
 body {
     background-image: url('inicio.jpg');
     background-position: center;
-    background-size: cover;  /* Usar background-size en lugar de 'background' */
-    background-repeat: no-repeat; /* Evitar que se repita la imagen */
+    background-size: cover;  
+    background-repeat: no-repeat; 
 }
 input{
     width: 300px;
