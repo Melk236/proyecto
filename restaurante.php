@@ -270,22 +270,34 @@ if (!isset($_SESSION['usuario'])) {
           Descubre los servicios exclusivos que ofrecemos para hacer de tu experiencia algo inolvidable.
         </p>
       </div>
-      <div class="row g-4">
-        <!-- Service Card 1 -->
-        <div class="col-lg-4 col-md-6">
-          <div class="card service-card shadow-sm">
-            <div class="position-relative">
-              <img src="https://via.placeholder.com/400x200" class="card-img-top service-image" alt="Catering para Eventos">
-              <div class="service-price">Desde 25€</div>
-            </div>
-            <div class="card-body p-4">
-              <h3 class="card-title h4 font-serif fw-bold">Catering para Eventos</h3>
-              <p class="card-text text-muted">Ofrecemos servicios de catering para todo tipo de eventos, desde bodas hasta reuniones corporativas. Menús personalizados con la mejor gastronomía mediterránea.</p>
-              <a href="<?php echo $link; ?>" class="btn btn-outline-primary rounded-pill mt-3">Reservar</a>
-            </div>
-          </div>
-        </div>
-
+      <?php
+      try{
+        $conexion=new PDO('mysql:host=localhost;dbname=restaurante','root','root');
+        $resultado=$conexion->prepare('SELECT * FROM servicios');
+        $resultado->execute();
+        echo '<div class="row g-4">';
+        while($fila=$resultado->fetch(PDO::FETCH_ASSOC)){
+          
+          // Service Card 1 
+          echo '<div class="col-lg-4 col-md-6">';
+          echo '<div class="card service-card shadow-sm">';
+          echo '<div class="position-relative">';
+          echo '<img src="'.$fila['imagen'].'" class="card-img-top service-image" alt="Catering para Eventos">';
+          
+          echo   '</div>';
+          echo '<div class="card-body p-4">';
+          echo '<h3 class="card-title h4 font-serif fw-bold">'.$fila['nombre'].'</h3>';
+          echo  '<p class="card-text text-muted">'.$fila['descripcion'].'</p>';
+          echo '<a href="<?php echo $link; ?>" class="btn btn-outline-primary rounded-pill mt-3">Reservar</a>';
+          echo '</div>';
+          echo '</div>';
+          echo '</div>';
+        }
+      }catch(PDOException $e){
+        echo 'Error: '.$e->getMessage();
+      }
+      
+      ?>
     </section>
     <footer class="bg-dark text-white">
 

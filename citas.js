@@ -185,7 +185,7 @@ window.onload = () => {
         boton[i].addEventListener('click', () => {
 
             let localizador = boton[i].getAttribute('data-localizador');
-           
+
             let boton2 = document.getElementById('codigo');
             boton2.addEventListener('click', () => {
                 let peticion = new XMLHttpRequest();
@@ -215,30 +215,38 @@ window.onload = () => {
         });
 
     }
-}
-function eliminarCita() {
+    let botonServicios = document.getElementsByClassName('servicios');
 
+    for (let i = 0; i < botonServicios.length; i++) {
 
+        botonServicios[i].addEventListener('click', () => {
+            let id = botonServicios[i].getAttribute('data-id');
+            let boton2 = document.getElementById('codigo');
+            boton2.addEventListener('click', () => {
+                let peticion = new XMLHttpRequest();
 
-    let localizador = boton.getAttribute('data-localizador');
+                peticion.open('POST', 'eliminarServicios.php', true);
 
-    let peticion = new XMLHttpRequest();
+                peticion.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-    peticion.open('POST', 'eliminarCitas.php', true);
+                peticion.onreadystatechange = function () {
 
-    peticion.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    if (peticion.readyState == 4 && peticion.status == 200) {
+                        let objeto = JSON.parse(peticion.responseText);
+                        if (!objeto.respuesta) {
+                            alert(objeto.mensaje);
 
-    peticion.onreadystatechange = function () {
+                        }
 
-        if (peticion.readyState == 4 && peticion.status == 200) {
-            let objeto = JSON.parse(peticion.responseText);
-            if (!objeto.respuesta) {
-                alert(objeto.respuesta);
-            }
+                     location.reload();
+                    }
+                }
+                let parametros = 'id=' + encodeURIComponent(id);
+                peticion.send(parametros);
+            });
 
-            location.reload();
-        }
+        });
     }
-    let parametros = 'localizador=' + encodeURIComponent(localizador);
-    peticion.send(parametros);
 }
+
+

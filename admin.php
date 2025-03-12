@@ -94,13 +94,13 @@
             background-color: var(--bs-primary);
             color: white;
         }
+
         .form-container {
             background-color: #f8f9fa;
             border-radius: 10px;
             padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
-
     </style>
 </head>
 
@@ -151,7 +151,7 @@
         </div>
         </div>
 
-        <!-- Appointments Table -->
+        <!-- Gestion de citas -->
         <div class="table-responsive">
             <table class="table table-striped table-hover">
                 <thead class="table-dark">
@@ -254,19 +254,19 @@
             <h2 class="font-serif fw-bold mb-0">Gestión de Servicios</h2>
         </div>
 
-        <!-- Add/Edit Service Form -->
+        <!-- Añadir servicio -->
 
         <div class="form-container mb-5">
             <h3 class="font-serif mb-3">Añadir Nuevo Servicio</h3>
-            <form id="serviceForm">
+            <form id="serviceForm" action="servicios.php" method="post" enctype="multipart/form-data">
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <label for="serviceName" class="form-label">Nombre del Servicio*</label>
-                        <input type="text" class="form-control" id="serviceName" required>
+                        <input type="text" class="form-control" name="nombre" required>
                     </div>
                     <div class="col-md-6">
                         <label for="serviceCategory" class="form-label">Categoría</label>
-                        <select class="form-select" id="serviceCategory">
+                        <select class="form-select" name="categoria">
                             <option value="catering">Catering</option>
                             <option value="eventos">Eventos</option>
                             <option value="especiales">Menús Especiales</option>
@@ -277,29 +277,84 @@
 
                 <div class="mb-3">
                     <label for="serviceDescription" class="form-label">Descripción*</label>
-                    <textarea class="form-control" id="serviceDescription" rows="3" required></textarea>
+                    <textarea class="form-control" name="descripcion" rows="3" required></textarea>
                 </div>
 
                 <div class="row mb-3">
-                    <div class="col-md-6">
+                    <div class="col-md-10">
                         <label for="serviceImage" class="form-label">Imagen*</label>
-                        <input type="file" class="form-control" id="serviceImage" accept="image/*" required>
+                        <input type="file" class="form-control" name="imagen" required>
                         <div class="form-text">Solo se permiten archivos de imagen (JPG, PNG, GIF)</div>
                     </div>
-                    <div class="col-md-6">
-                        <label for="servicePrice" class="form-label">Precio (€)</label>
-                        <input type="number" class="form-control" id="servicePrice" min="0" step="0.01">
-                    </div>
+
                 </div>
 
-               
+
 
                 <div class="d-flex justify-content-end">
                     <button type="reset" class="btn btn-secondary me-2">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Guardar Servicio</button>
+                    <button type="submit" class="btn btn-primary" name="enviar">Guardar Servicio</button>
                 </div>
             </form>
         </div>
+    </article> <!--Eliminar citas-->
+    <article class="container my-4">
+        <div class="d-flex align-items-center mb-4">
+            <i class="fas fa-calendar-check text-primary me-2 fs-3"></i>
+            <h2 class="font-serif fw-bold mb-0">Gestión de Citas</h2>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Localizador</th>
+                        <th>Cliente</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+
+
+                        <th>Borrar</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <?php
+                    try {
+                        $conexion = new PDO('mysql:host=localhost;dbname=restaurante', 'root', 'root');
+
+                        $localizador = $_POST['localizador'];
+                        $resultado = $conexion->prepare('SELECT * FROM servicios');
+                        $resultado->execute();
+                        while ($fila = $resultado->fetch(PDO::FETCH_ASSOC)) {
+                          
+                            echo '<tr>';
+                            echo '<td>' . $fila['id'] . '</td>';
+                            echo '<td>' . $fila['nombre'] . '</td>';
+                            echo '<td>' . $fila['imagen'] . '</td>';
+                            echo '<td>' . $fila['categoria'] . '</td>';
+                            echo '<td>
+                                
+                                <button class="servicios btn btn-sm btn-danger btn-action" data-bs-toggle="modal"  data-bs-target="#deleteModal" data-id="' . $fila['id'] . '">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>';
+
+                            echo '</tr>';
+                        }
+                    } catch (PDOException $e) {
+                        echo $e->getMessage();
+                    }
+                    ?>
+
+
+
+                </tbody>
+            </table>
+        </div>
+
+
+
     </article>
 
     <!-- Footer -->
