@@ -4,6 +4,7 @@ body {
     background-size: cover;  
     background-repeat: no-repeat; 
 }
+
 input{
     width: 300px;
     margin-top: 15px;
@@ -11,7 +12,7 @@ input{
 
 .form{
     max-width: 500px;
-    margin-top: 100px;
+    margin-top: 220px;
     display: grid;
     justify-content: center;
     align-content: center;
