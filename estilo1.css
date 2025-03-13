@@ -1,6 +1,9 @@
 body{
     font-family: 'Roboto', sans-serif;
 }
+header{
+    padding: 20px;
+}
 a{
     text-decoration: none;
     color: gray;
@@ -20,4 +23,24 @@ p{
 }
 footer{
     margin-top: 100px;
+}
+/* Estilo base para los botones */
+button {
+    background-color: #3498db; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 12px 24px; /* Espaciado dentro del botón */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de la fuente */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+    transition: all 0.3s ease-in-out; /* Transición suave para todos los cambios */
+}
+
+/* Estilo cuando el usuario hace hover sobre el botón */
+button:hover {
+    transform: scale(1.1); /* Aumento del tamaño del botón */
+    background-color: #2980b9; /* Color de fondo más oscuro */
+    color: white; /* Mantener el color del texto blanco */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Sombra suave */
+    transition: all 0.3s ease-in-out; /* Transición suave para el hover */
 }

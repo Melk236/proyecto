@@ -38,7 +38,25 @@ a:first-child{
 li{
     list-style: none;
 }
-footer{
-    padding: 3rem 0;
-    
-}
+
+  
+  .navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  
+  .navbar-brand {
+    font-size: 1.75rem; /* Aumenta el tamaño de la fuente del logo */
+  }
+  
+  .navbar-nav .nav-link {
+    font-size: 1.2rem; /* Aumenta el tamaño de la fuente de los enlaces */
+  }
+  
+  .navbar-toggler {
+    font-size: 1.5rem; /* Aumenta el tamaño del ícono de menú */
+  }
+  
+  .navbar .navbar-toggler-icon {
+    background-color: #000; /* Cambia el color del ícono de menú */
+  }
